@@ -7,11 +7,12 @@ def carica_da_file(file_path):
     try:
         infile=open("album_fotografico.csv", "r", encoding="utf-8")
         for line in infile:
-            codice=line[0]
-            titolo=line[1]
-            autore=line[2]
-            mese=int(line[3])
-            anno=int(line[4])
+            campi = line.split(',')
+            codice=campi[0].strip()
+            titolo=campi[1].strip()
+            autore=campi[2].strip()
+            mese = int(campi[3].strip())
+            anno=int(campi[4].strip())
             foto=[codice,titolo,autore,mese,anno]
 
             anno_trovato = False
