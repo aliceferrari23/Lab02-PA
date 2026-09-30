@@ -5,7 +5,8 @@ def carica_da_file(file_path):
     """Carica le foto dal file, creando un nuovo anno ogni volta che compare per la prima volta"""
     album=[]
     try:
-        infile=open("album_fotografico.csv", "r", encoding="utf-8")
+        infile=open(file_path, "r", encoding="utf-8")
+        infile.readline()
         for line in infile:
             campi = line.split(',')
             codice=campi[0].strip()
@@ -20,6 +21,7 @@ def carica_da_file(file_path):
                 if dati_anno[0] == anno:
                     dati_anno[1].append(foto)
                     anno_trovato = True
+                    break
             if not anno_trovato:
                 album.append([anno, [foto]])
         return album
